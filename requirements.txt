@@ -8,6 +8,7 @@ Django==4.2.7
 executing==2.0.1
 flake8==7.0.0
 ipython==8.20.0
+isort==5.13.2
 jedi==0.19.1
 matplotlib-inline==0.1.6
 mccabe==0.7.0
@@ -15,6 +16,7 @@ mypy-extensions==1.0.0
 packaging==23.2
 parso==0.8.3
 pathspec==0.12.1
+pillow==10.2.0
 platformdirs==4.1.0
 prompt-toolkit==3.0.43
 pure-eval==0.2.2
