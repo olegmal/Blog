@@ -14,6 +14,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",  # NOQA
     }
 }
-
-STATIC_URL = "static/"
+#
+# STATIC_URL = "static/"
 # STATICFILES_DIRS = [BASE_DIR / "static"]
