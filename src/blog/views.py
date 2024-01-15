@@ -59,7 +59,7 @@ class SinglePostView(View):
             comment.post = post
             comment.save()
 
-            return HttpResponseRedirect(reverse("post-detail-page", args=[slug]))
+            return HttpResponseRedirect(reverse("post-detail", args=[slug]))
 
         context = {
             "post": post,
