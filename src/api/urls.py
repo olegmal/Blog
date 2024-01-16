@@ -1,13 +1,13 @@
 from django.urls import include, path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-from rest_framework import routers, permissions
+from rest_framework import permissions, routers
 
-from api.views import PostViewSet, PostDetailView
+from api.views import PostDetailView, PostListView
 
 app_name = "api"
 router = routers.DefaultRouter()
-router.register("posts", PostViewSet)
+router.register("posts", PostListView)
 
 # posts/ - all
 # posts/1 - one
@@ -33,5 +33,5 @@ urlpatterns = [
     path("", include(router.urls)),
     path("docs/", schema_view.with_ui("swagger", cache_timeout=0), name="swagger_docs"),
     path("posts/<int:pk>/", PostDetailView.as_view(), name="post_detail"),
-    # path("posts/", PostViewSet.as_view(), name="post_list"),
+    path("posts/", PostListView.as_view(), name="post_list"),
 ]
