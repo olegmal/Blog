@@ -3,6 +3,10 @@ from config.settings.base import *  # NOQA
 SECRET_KEY = "django-secret-key"
 DEBUG = True
 
+# INSTALLED_APPS = [   # NOQA
+#     # "django_extensions",
+# ]
+
 ALLOWED_HOSTS = []
 
 # Database

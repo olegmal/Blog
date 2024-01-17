@@ -1,12 +1,11 @@
-
-from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from django.views.generic import ListView
 from django.views import View
+from django.views.generic import ListView
 
-from .models import Post
 from .forms import CommentForm
+from .models import Post
 
 
 class IndexPageView(ListView):
@@ -46,7 +45,7 @@ class SinglePostView(View):
             "post_tags": post.tags.all(),
             "comment_form": CommentForm(),
             "comments": post.comments.all().order_by("-id"),
-            "saved_for_later": self.is_stored_post(request, post.id)
+            "saved_for_later": self.is_stored_post(request, post.id),
         }
         return render(request, "blog/post-detail.html", context)
 
@@ -59,14 +58,14 @@ class SinglePostView(View):
             comment.post = post
             comment.save()
 
-            return HttpResponseRedirect(reverse("post-detail-page", args=[slug]))
+            return HttpResponseRedirect(reverse("post-detail", args=[slug]))
 
         context = {
             "post": post,
             "post_tags": post.tags.all(),
             "comment_form": comment_form,
             "comments": post.comments.all().order_by("-id"),
-            "saved_for_later": self.is_stored_post(request, post.id)
+            "saved_for_later": self.is_stored_post(request, post.id),
         }
         return render(request, "blog/post-detail.html", context)
 
