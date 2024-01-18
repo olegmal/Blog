@@ -1,24 +1,23 @@
 from rest_framework import viewsets
-from rest_framework.generics import RetrieveAPIView, ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from api.serializers import PostSerializer
 from blog.models import Post
+from core.permissions import IsSuperuser
 
-
-# class PostListView(ListAPIView):
+# class PostViewSet(viewsets.ModelViewSet):
+#     permission_classes = [IsSuperuser]
 #     queryset = Post.objects.all()
 #     serializer_class = PostSerializer
-#
-#
-# class PostDetailView(RetrieveAPIView):
-#     serializer_class = PostSerializer
-#
-#     def get_queryset(self):
-#         return Post.objects.all()
-#
-#     def get_object(self):
-#         return Post.objects.filter(post__pk=self.kwargs.get("pk")).first()
 
-class PostViewSet(viewsets.ModelViewSet):
+
+class PostListView(ListAPIView):
+    # permission_classes = [IsSuperuser]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class PostDetailView(RetrieveAPIView):
+    # permission_classes = [IsSuperuser]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
