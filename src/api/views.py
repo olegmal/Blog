@@ -1,24 +1,17 @@
 from rest_framework import viewsets
-from rest_framework.generics import RetrieveAPIView, ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from api.serializers import PostSerializer
 from blog.models import Post
 
 
-# class PostListView(ListAPIView):
-#     queryset = Post.objects.all()
-#     serializer_class = PostSerializer
-#
-#
-# class PostDetailView(RetrieveAPIView):
-#     serializer_class = PostSerializer
-#
-#     def get_queryset(self):
-#         return Post.objects.all()
-#
-#     def get_object(self):
-#         return Post.objects.filter(post__pk=self.kwargs.get("pk")).first()
+class PostListView(ListAPIView):
+    # permission_classes = [IsSuperuser]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
-class PostViewSet(viewsets.ModelViewSet):
+
+class PostDetailView(RetrieveAPIView):
+    # permission_classes = [IsSuperuser]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
