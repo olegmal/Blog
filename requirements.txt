@@ -28,8 +28,10 @@ Markdown==3.5.2
 matplotlib-inline==0.1.6
 mccabe==0.7.0
 mypy-extensions==1.0.0
+numpy==1.26.3
 oauthlib==3.2.2
 packaging==23.2
+pandas==2.2.0
 parso==0.8.3
 pathspec==0.12.1
 pillow==10.2.0
@@ -41,6 +43,7 @@ pycparser==2.21
 pyflakes==3.2.0
 Pygments==2.17.2
 PyJWT==2.8.0
+python-dateutil==2.8.2
 python3-openid==3.2.0
 pytz==2023.3.post1
 PyYAML==6.0.1
