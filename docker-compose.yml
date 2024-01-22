@@ -1,0 +1,40 @@
+version: "3"
+
+#docker run --rm -it -p 8010:8000 -v D:\Hillel\Blog\src:/Blog/src
+#           --name blog_cont blog_image  ./commands/start_server_dev.sh
+
+
+
+services:
+    backend:
+#      image: blog_image
+        build: ./
+        container_name: blog_container
+        working_dir: /Blog
+        ports:
+          - 8010:8000
+        volumes:
+          - ./src:/Blog/src
+          - ./commands:/Blog/commands
+        command:
+          - ./commands/start_server_dev.sh
+        env_file:
+          - .env
+
+        depends_on:
+              - postgres
+
+    postgres:
+      image: postgres:16.1
+      ports:
+        - 5432:5432
+      volumes:
+        - pg_data:/var/lib/postgresql/data
+      env_file:
+        - .env
+
+volumes:
+  pg_data: { }
+
+
+
