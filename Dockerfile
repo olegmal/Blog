@@ -1,8 +1,8 @@
 FROM python:3.11-rc-slim
 
-RUN apt update && mkdir "/blog"
+RUN apt update && mkdir "/Blog"
 
-WORKDIR /blog
+WORKDIR /Blog
 
 COPY ./src ./src
 COPY ./commands ./commands

@@ -62,7 +62,9 @@ class Migration(migrations.Migration):
                 ("slug", models.SlugField(unique=True)),
                 (
                     "content",
-                    models.TextField(validators=[django.core.validators.MinLengthValidator(10)]),
+                    models.TextField(
+                        validators=[django.core.validators.MinLengthValidator(10)]
+                    ),
                 ),
                 (
                     "author",

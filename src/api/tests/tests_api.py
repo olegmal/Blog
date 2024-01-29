@@ -10,14 +10,20 @@ from blog.models import Post
 class TestAPI(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.post = Post.objects.create(title="Post 1", fragment="Something about nothing 1", content="Content 1")
+        self.post = Post.objects.create(
+            title="Post 1", fragment="Something about nothing 1", content="Content 1"
+        )
         # Post.objects.create(title="Post 2", fragment="Something about nothing 2", content="Content 2")
 
-        self.user = get_user_model().objects.create(username="testuser", email="test_api@example.com")
+        self.user = get_user_model().objects.create(
+            username="testuser", email="test_api@example.com"
+        )
         self.user.set_password("qwerty1234")
         self.user.save()
 
-        self.superuser = get_user_model().objects.create(email="test_api_superuser@example.com", is_superuser=True)
+        self.superuser = get_user_model().objects.create(
+            email="test_api_superuser@example.com", is_superuser=True
+        )
         self.superuser.set_password("qwerty1234")
         self.superuser.save()
 
@@ -43,7 +49,9 @@ class TestAPI(TestCase):
 
     def test_post_detail(self):
         self.client.force_authenticate(user=self.superuser)
-        response = self.client.get(reverse("api:post_detail", kwargs={"pk": self.post.pk}))
+        response = self.client.get(
+            reverse("api:post_detail", kwargs={"pk": self.post.pk})
+        )
         self.assertEqual(response.status_code, HTTP_200_OK)
         self.assertEqual(response.data["title"], self.post.title)
 
